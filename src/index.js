@@ -1,21 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
-import {InputItem} from "./demo/InputItem";
-import {ListOfItem} from "./demo/ListOfItem";
+import {App} from "./demo/App";
+import {AppClass} from "./demo/AppClass";
 
-const App = () => {
-    const [itemList, onItemListChange] = useState(["Create new item", "modify the created item"])
-    
-    const handleInputItem = (item) => {
-        onItemListChange(itemList.concat(item));
-    };
-    return <>
-        <ListOfItem items={itemList}/>
-        <InputItem onInputItem={handleInputItem}/>
-    </>;
-}
-
-ReactDOM.render(
-  <App />,
-  document.getElementById('root')
-);
+// ReactDOM.render(<App />,  document.getElementById('root'));
+ReactDOM.render(<AppClass />,  document.getElementById('root'));
