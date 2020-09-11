@@ -4,7 +4,7 @@ import {ADD_ITEM_TYPE} from "./actions";
 const initialState = {
     todos:["Redux: Create new item", "Redux: modify the created item"],
     object: {
-        header: "New Prateek's TODO List"
+        header: "New Prateek's TODO List",
     }
 };
 

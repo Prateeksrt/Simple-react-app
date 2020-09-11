@@ -1,26 +1,34 @@
 import React from 'react';
 import {ListOfItem} from "./ListOfItem";
 import {InputItem} from "./InputItem";
+import {addItem} from "../redux/actions";
+import {connect} from "react-redux";
 
-export class AppClass extends React.Component {
+const mapStateToProps = (globalState) => ({
+    itemList: globalState.todos,
+    header: globalState.object.header
+});
+const mapDispatchToProps = (dispatch) => ({
+    addItemToList: (item) => dispatch(addItem("Class " + item))
+});
+
+class AppClass extends React.Component {
     constructor(props) {
         super(props);
-        
-        this.state = {
-            itemList: ["Class: Create new item", "Class: modify the created item"]
-        };
         
         this.handleInputItem = this.handleInputItem.bind(this);
     }
     
     handleInputItem(item) {
-        this.setState({itemList: [...this.state.itemList, item]});
+        this.props.addItemToList(item);
     }
     
     render() {
         return <>
-            <ListOfItem items={this.state.itemList}/>
+            <h1>{this.props.header}</h1>
+            <ListOfItem items={this.props.itemList}/>
             <InputItem onInputItem={this.handleInputItem}/>
         </>;
     }
 }
+export default connect(mapStateToProps, mapDispatchToProps)(AppClass);
