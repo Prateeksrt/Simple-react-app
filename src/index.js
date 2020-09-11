@@ -3,10 +3,8 @@ import ReactDOM from 'react-dom';
 import {InputItem} from "./demo/InputItem";
 import {ListOfItem} from "./demo/ListOfItem";
 
-
 const App = () => {
     const [itemList, onItemListChange] = useState(["Create new item", "modify the created item"])
-    
     
     const handleInputItem = (item) => {
         onItemListChange(itemList.concat(item));
