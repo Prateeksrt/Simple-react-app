@@ -7,6 +7,7 @@ import {addItem} from "../redux/actions";
 export const App = () => {
     const itemList = useSelector((state) => state.todos);
     const header = useSelector(state => state.object.header);
+    
     const dispatch = useDispatch();
     
     const handleInputItem = (item) => {

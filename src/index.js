@@ -14,7 +14,7 @@ import {Provider} from 'react-redux';
 
 ReactDOM.render(
     <Provider store={store}>
-        <AppClass />
+        <AppClass greeting={" Version 1.0"}/>
     </Provider>,
     document.getElementById('root')
 );
