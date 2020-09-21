@@ -7,8 +7,8 @@ import {Provider} from 'react-redux';
 
 ReactDOM.render(
     <Provider store={store}>
-        <App />,
-        {/*<AppClass greeting={" Version 1.0"}/>*/}
+        {/*<App />,*/}
+        <AppClass greeting={" Version 1.0"}/>
     </Provider>,
     document.getElementById('root')
 );
