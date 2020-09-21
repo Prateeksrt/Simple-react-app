@@ -11,7 +11,7 @@ const mapStateToProps = (globalState) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     addItemToList: (item) => dispatch(addItem("Class " + item)),
-    addItemFromApi: (id) => addItemFromApi(id, dispatch)
+    addItemFromApi: (id) => dispatch(addItemFromApi(id))
 });
 
 class AppClass extends React.Component {
