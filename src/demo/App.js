@@ -11,7 +11,7 @@ export const App = () => {
     const dispatch = useDispatch();
     
     const handleApi = () => {
-        addItemFromApi(3, dispatch);
+        dispatch(addItemFromApi(3));
     }
     
     const handleInputItem = (item) => {
