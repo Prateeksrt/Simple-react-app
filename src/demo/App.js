@@ -1,8 +1,8 @@
-import React, {useState} from "react";
+import React from "react";
 import {ListOfItem} from "./ListOfItem";
 import {InputItem} from "./InputItem";
 import {useDispatch, useSelector} from "react-redux";
-import {addItem} from "../redux/actions";
+import {addItem, addItemFromApi} from "../redux/actions";
 
 export const App = () => {
     const itemList = useSelector((state) => state.todos);

@@ -1,5 +1,6 @@
-import {createStore} from "redux";
+import {applyMiddleware, createStore} from "redux";
 import {ADD_ITEM_TYPE} from "./actions";
+import reduxThunk from 'redux-thunk';
 
 const initialState = {
     todos:["Redux: Create new item", "Redux: modify the created item"],
@@ -17,4 +18,4 @@ const todoApp = (oldState = initialState, action) => {
     }
 } 
 
-export const store = createStore(todoApp);
+export const store = createStore(todoApp, applyMiddleware(reduxThunk));
