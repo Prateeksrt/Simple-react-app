@@ -1,9 +1,8 @@
 import React from 'react';
 import {ListOfItem} from "./ListOfItem";
 import {InputItem} from "./InputItem";
-import {addItem} from "../redux/actions";
+import {addItem, addItemFromApi} from "../redux/actions";
 import {connect} from "react-redux";
-import {FunnyInput} from "./FunnyInput";
 
 const mapStateToProps = (globalState) => ({
     itemList: globalState.todos,
@@ -11,34 +10,43 @@ const mapStateToProps = (globalState) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    addItemToList: (item) => dispatch(addItem("Class " + item))
+    addItemToList: (item) => dispatch(addItem("Class " + item)),
+    addItemFromApi: (id) => addItemFromApi(id, dispatch)
 });
 
 class AppClass extends React.Component {
     constructor(props) {
         super(props);
         
-        this.state = {value:"one"}
+        this.state = { value: 1}
         
         this.handleInputItem = this.handleInputItem.bind(this);
-        this.handleFunnyInput = this.handleFunnyInput.bind(this);
+        this.handleValueChange = this.handleValueChange.bind(this);
+        this.callApi = this.callApi.bind(this);
     }
     
     handleInputItem(item) {
         this.props.addItemToList(item);
     }
 
-    handleFunnyInput(enteredValue) {
-        this.setState({value: "Funny: "+ enteredValue});
+    handleValueChange(enteredValue) {
+        this.setState({value: enteredValue});
+    }
+    
+    callApi() {
+        this.props.addItemFromApi(this.state.value);
+        this.setState({value:""});
     }
     
     render() {
         return <>
             <h1>{this.props.header + this.props.greeting}</h1>
-            <h2>{this.state.value}</h2>
             <ListOfItem items={this.props.itemList}/>
             <InputItem onInputItem={this.handleInputItem}/>
-            <FunnyInput value={this.state.value} onEnter={this.handleFunnyInput} />
+            <div>
+                <input type="text" value={this.state.value} onChange={(e) => this.handleValueChange(e.target.value)} />
+                <button onClick={this.callApi}>Call Api</button>
+            </div>
         </>;
     }
 }

@@ -10,6 +10,10 @@ export const App = () => {
     
     const dispatch = useDispatch();
     
+    const handleApi = () => {
+        addItemFromApi(3, dispatch);
+    }
+    
     const handleInputItem = (item) => {
         dispatch(addItem(item));
     };
@@ -18,5 +22,8 @@ export const App = () => {
         <h1>{header}</h1>
         <ListOfItem items={itemList}/>
         <InputItem onInputItem={handleInputItem}/>
+        <div>
+            <button onClick={handleApi} >Call Api</button>
+        </div>
     </>;
 }
